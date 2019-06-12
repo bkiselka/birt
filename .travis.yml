@@ -1,28 +1,27 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 cache:
   directories:
-    - ~/.m2
+  - "~/.m2"
 script: mvn -B --global-toolchains travis-maven-toolchain.xml clean package -DskipTests
 install:
-  -
-  
+- 
 env:
   global:
    # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
    #   via the "travis encrypt" command using the project repo's public key
-   - secure: "r/cNAsDIaX3GG3vJqvjsDLQQvtKJ6QdqCyWlfKiPHl5xPj1C4K8yqTj3KxQFpOeRI1xbL5hbIEQCxDKEGBI59LptkbBvLVLTWT1IXQVc3L87y19zDgOgUMnXbbjgqEwtKHPgU40KBOm+t+jz8ZtBBi/OfFNhT9Ev754KJV8gEWiooLPPfPskkKYcqkmfoh8MZsXRGNV5mgOSHXHBXxErarRH6KBIc2EhWxNwP81X1SjDQM3ZJcaTYN8vLF92MvaEh3Rkq8kB7qwQpkf2rQMBb/xTSN7qbPfYuDoKRIlMqouIkjHRiFFxOnaCnRDihh+SgOlI4aV2qe98jV8yMUJSbKVpmYM2LLc7UDn6YwUru3IdaS61R8Xa2P3HTbtl6eKLtxQdBb35XlvGhcWkbKPqA3WtQqC1LTvKTO6w7KNrRbQ7Y1fwgZopUz2yKEFTvGA+fFW50LDmHpCB0gWWrJBYcjOYWmCgfNQDxA/m10y55BmVEFhPfyt5B1czejdkSHhmxar9dhAeNANQ4KA3LqyhCA3KNkqhl3HnWwr1FkvxY7bL58qgrJCk5k7BsoP/Hsf1Uhtp2bzs+FiWDTDkICWzE58lCnuJiIqpbiPc6sazJxGkvz8jDlwkGP/eWCtSoNDGbc1gAeNhI1TDIK3519RqltJ0czd/55fABAwU/tjH7c0="
-
+  - secure: r/cNAsDIaX3GG3vJqvjsDLQQvtKJ6QdqCyWlfKiPHl5xPj1C4K8yqTj3KxQFpOeRI1xbL5hbIEQCxDKEGBI59LptkbBvLVLTWT1IXQVc3L87y19zDgOgUMnXbbjgqEwtKHPgU40KBOm+t+jz8ZtBBi/OfFNhT9Ev754KJV8gEWiooLPPfPskkKYcqkmfoh8MZsXRGNV5mgOSHXHBXxErarRH6KBIc2EhWxNwP81X1SjDQM3ZJcaTYN8vLF92MvaEh3Rkq8kB7qwQpkf2rQMBb/xTSN7qbPfYuDoKRIlMqouIkjHRiFFxOnaCnRDihh+SgOlI4aV2qe98jV8yMUJSbKVpmYM2LLc7UDn6YwUru3IdaS61R8Xa2P3HTbtl6eKLtxQdBb35XlvGhcWkbKPqA3WtQqC1LTvKTO6w7KNrRbQ7Y1fwgZopUz2yKEFTvGA+fFW50LDmHpCB0gWWrJBYcjOYWmCgfNQDxA/m10y55BmVEFhPfyt5B1czejdkSHhmxar9dhAeNANQ4KA3LqyhCA3KNkqhl3HnWwr1FkvxY7bL58qgrJCk5k7BsoP/Hsf1Uhtp2bzs+FiWDTDkICWzE58lCnuJiIqpbiPc6sazJxGkvz8jDlwkGP/eWCtSoNDGbc1gAeNhI1TDIK3519RqltJ0czd/55fABAwU/tjH7c0=
+  - secure: l0lV+Z9+X/3C0p31okltHyG4rzU/1SxykrJ+3z+GJO2lKhKVGJuOPWq7mF+mY05V7wuSjZ/i0Skj7PvL+vgJmPaYYAHGNKTXAaa4lLntyOZRbqo5OE3ZI/jJEQF5GLn+1eLywBIINOFQ+6tyKm3P4C6pT5gdPQtRbPiep1wMZGGKGlvh4Wel53+oX49carFKxX1FXmLy1GVOx5Nd9u5WT+9DJlSbD40UgxWE+nHjPsHw4SW9cclXmA6wTEuhd43sGTwOL89Jc8i0rlRrfcnwvy1HdLkLlP6SZg7A2VZRFhBOBsEsV3axTebSYJUwDlIr2R+2hwO92i9hfHWw+J0Ejf2WqYAMeFp74vF87HrxxkBcDB/wXtm3U5nRqxhTAQJs8GEH4PN5MXlEEenwxV675eDBnwJKeQ/SmoxR76p+f4PVHow9NoXjXmDvAPuKO65qKshnMUBriB26KRL3RsiwQW9xRDgP+X0HcsVnasBmUf54CWSv1zpxAILtEK2S+PHhdICxi8o7KAGICpprQ0KK6fGIqj9d3h3Ol3smYxMylbhrYfj+HDqvdcBB2nqErQRoSWWNb8LdAq69TaGiS16YWpF7pE3f/ZPoJ6Xu2lk3Ljf6hWmHFfeB6TMcD1oa+HofwEd7/XMyR4qPlYqmys3MCaNAueYp54XMo1125CmVh7E=
 before_install:
-  - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
-
+- echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN
+  CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
 addons:
   coverity_scan:
     project:
-      name: "bkiselka/birt"
-      description: "The open source Eclipse BIRT reporting and data visualization project."
+      name: bkiselka/birt
+      description: The open source Eclipse BIRT reporting and data visualization project.
     notification_email: bernhard.kiselka@gmx.at
-    build_command_prepend: ""
-    build_command: "mvn -B --global-toolchains travis-maven-toolchain.xml clean package"
+    build_command_prepend: ''
+    build_command: mvn -B --global-toolchains travis-maven-toolchain.xml clean package
     branch_pattern: coverity_scan
