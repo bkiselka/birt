@@ -21,6 +21,11 @@ To build BIRT with Eclipse Oxygen, run:
 * Maven 3.5+
 * toolchains.xml with Java-SE-1.8
 
+<a href="https://scan.coverity.com/projects/bkiselka-birt">
+  <img alt="Coverity Scan Build Status"
+       src="https://scan.coverity.com/projects/18595/badge.svg"/>
+</a>
+
 # Useful links
 ## Build Download
 http://download.eclipse.org/birt/downloads/build_list.php
