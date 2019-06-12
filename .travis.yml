@@ -23,5 +23,5 @@ addons:
       description: The open source Eclipse BIRT reporting and data visualization project.
     notification_email: bernhard.kiselka@gmx.at
     build_command_prepend: ''
-    build_command: mvn -B --global-toolchains travis-maven-toolchain.xml clean package
+    build_command: mvn clean package -DskipTests
     branch_pattern: coverity_scan
